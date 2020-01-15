@@ -170,6 +170,133 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-博客搭建流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B">博客搭建流程</a>
+    </h1>
+  
+
+        
+        <a href="/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B" class="archive-article-date">
+  	<time datetime="2020-01-15T17:18:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>准备用公司的电脑写博客上传到github，然后部署。之前的代码库在原来自己的电脑上，github上只有部署后的代码。遇到的问题就是，换了电脑之后如何切换写好的博客文章库</p>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><p><strong>使用Hexo搭建github博客</strong></p>
+<p>Hexo搭建的博客其实是个静态的博客，每次需要新发表一篇博客时，需要在本地库中新增一个.md文件，执行hexo g再次生成一个新的网页，然后执行hexo d进行网页的部署，从而替换到原先的网页</p>
+<p>优势：有着更大的自主性，从主题到博文展示</p>
+<p>劣势：不能在线编辑，需要自己管理博文库</p>
+<p>依赖的软件：Node.js</p>
+<p>前提条件：</p>
+<ul>
+<li>已安装Git工具</li>
+<li>已有GitHub账号</li>
+<li>（Mac）已安装Xcode command line tools</li>
+</ul>
+<h3 id="第一步-安装Node-js"><a href="#第一步-安装Node-js" class="headerlink" title="第一步-安装Node.js"></a>第一步-安装Node.js</h3><p><a href="https://www.jianshu.com/p/c1b6c452a98a" target="_blank" rel="noopener">参考博文</a></p>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网下载地址</a></p>
+<p>我直接在官网下下载的，一路安装都不存在问题</p>
+<h3 id="第二步-安装Hexo"><a href="#第二步-安装Hexo" class="headerlink" title="第二步-安装Hexo"></a>第二步-安装Hexo</h3><p>执行命令 </p>
+<figure class="highlight plain"><figcaption><span>install -g hexo-cli    </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>一开始我报了个某个文件夹没有写入权限  加上sudo再次执行就OK了</p>
+<p>为了方便部署，安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>同时修改_config.yml文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	type: git</span><br><span class="line">	repository: git@github.com:oldbuffalo&#x2F;oldbuffalo.github.io.git  # 仓库用ssh  需要配一下公钥</span><br><span class="line">	branch: master</span><br></pre></td></tr></table></figure>
+
+
+
+<p>迁移的过程中，我采用的比较笨的方法，将原先电脑中的文件夹拷贝到公司电脑</p>
+<p>缺点：不方便，如果原先电脑出问题了，就不存在了</p>
+<p>关于里面文件作用的解释：</p>
+<ul>
+<li>_config.yml  配置文件        必须拷贝</li>
+<li>theme  自己下载的可选主题     必须拷贝</li>
+<li>source  最重要  博文源码      必须拷贝</li>
+<li>scaffolds  文章模板     不必拷贝</li>
+<li>package.json   说明使用哪些包  不必拷贝</li>
+<li>.gitignore  限制提交的时候哪些文件可以忽略   不必拷贝</li>
+</ul>
+<p>后三个文件在执行 hexo init的时候会自动生成，上面六个可以全部拷贝过去</p>
+<ul>
+<li>.git  没必要拷贝</li>
+<li>node_modules     npm install会重新生成</li>
+<li>public   hexo g 重新生成</li>
+<li>.deploy_git  hexo g 重新生成</li>
+<li>db.json  不用管</li>
+</ul>
+<p>其实上面五个文件也就是.gitignore文件里面记载的可以忽略的内容</p>
+<p><strong>需要注意的是</strong>：如果采用拷贝文件的方式迁移，则不必再执行hexo init，因为_config.yml会被重写</p>
+<h2 id="更优秀的做法"><a href="#更优秀的做法" class="headerlink" title="更优秀的做法"></a>更优秀的做法</h2><p>看到知乎上有人在github上创建了两个分支，master用来发布，hexo存放hexo源码，以后每次需要迁移的时候只要配置一下hexo环境，然后git clone一下hexo分支下面的代码</p>
+<p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安装</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-STL容器性能测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,12 +304,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/28/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">STL容器性能测试</a>
+      <a class="article-title" href="/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">STL容器性能测试</a>
     </h1>
   
 
         
-        <a href="/2019/04/28/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" class="archive-article-date">
+        <a href="/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95" class="archive-article-date">
   	<time datetime="2019-04-28T11:15:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
 </a>
         
@@ -204,7 +331,7 @@ var _hmt = _hmt || [];
 <p><a href="https://github.com/huihut/interview/blob/master/STL/STL.md" target="_blank" rel="noopener">STL容器详细文档</a></p>
 <p>小技巧：在编写测试程序的时候，让每个单元在独立的命名空间里面</p>
         
-          <a class="article-more-a" href="/2019/04/28/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/#more">more >></a>
+          <a class="article-more-a" href="/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95#more">more >></a>
         
       
 
@@ -232,7 +359,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/28/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">展开全文 >></a>
+          <a class="article-more-a" href="/STL%E5%AE%B9%E5%99%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">展开全文 >></a>
         </p>
       
 
@@ -269,12 +396,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/27/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">策略模式</a>
+      <a class="article-title" href="/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F">策略模式</a>
     </h1>
   
 
         
-        <a href="/2019/04/27/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+        <a href="/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F" class="archive-article-date">
   	<time datetime="2019-04-27T06:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-27</time>
 </a>
         
@@ -287,7 +414,7 @@ var _hmt = _hmt || [];
 <p>定义：</p>
 <p>定义一系列算法，把它们一个个封装起来，并且使它们可互相替换(变化)，该模式使得算法可独立于使用它的客户程序(稳定)而变化(扩展，子类化)。</p>
         
-          <a class="article-more-a" href="/2019/04/27/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/#more">more >></a>
+          <a class="article-more-a" href="/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F#more">more >></a>
         
       
 
@@ -311,7 +438,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/27/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F">展开全文 >></a>
         </p>
       
 
@@ -348,12 +475,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/26/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">C++11的一些小知识点</a>
+      <a class="article-title" href="/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9">C++11的一些小知识点</a>
     </h1>
   
 
         
-        <a href="/2019/04/26/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
+        <a href="/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9" class="archive-article-date">
   	<time datetime="2019-04-26T11:19:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
 </a>
         
@@ -368,7 +495,7 @@ var _hmt = _hmt || [];
 <p>在C++11之后，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;list&lt;int&gt;&gt;  &#x2F;&#x2F;这样写就可以了</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2019/04/26/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/#more">more >></a>
+          <a class="article-more-a" href="/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9#more">more >></a>
         
       
 
@@ -396,7 +523,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/26/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">展开全文 >></a>
+          <a class="article-more-a" href="/C-11%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9">展开全文 >></a>
         </p>
       
 
@@ -433,12 +560,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/26/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/">模板方法</a>
+      <a class="article-title" href="/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95">模板方法</a>
     </h1>
   
 
         
-        <a href="/2019/04/26/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/" class="archive-article-date">
+        <a href="/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95" class="archive-article-date">
   	<time datetime="2019-04-26T09:59:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
 </a>
         
@@ -454,7 +581,7 @@ var _hmt = _hmt || [];
 <li>Observer</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/04/26/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/#more">more >></a>
+          <a class="article-more-a" href="/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95#more">more >></a>
         
       
 
@@ -478,7 +605,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/26/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95">展开全文 >></a>
         </p>
       
 
@@ -515,12 +642,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6/">STL六大部件</a>
+      <a class="article-title" href="/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6">STL六大部件</a>
     </h1>
   
 
         
-        <a href="/2019/04/25/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6/" class="archive-article-date">
+        <a href="/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6" class="archive-article-date">
   	<time datetime="2019-04-25T12:37:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
 </a>
         
@@ -539,7 +666,7 @@ var _hmt = _hmt || [];
 <li>仿函数(Functors)</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/04/25/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6/#more">more >></a>
+          <a class="article-more-a" href="/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6#more">more >></a>
         
       
 
@@ -567,7 +694,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/STL%E5%85%AD%E5%A4%A7%E9%83%A8%E4%BB%B6">展开全文 >></a>
         </p>
       
 
@@ -604,12 +731,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/Variadic-Templates/">Variadic Templates</a>
+      <a class="article-title" href="/Variadic-Templates">Variadic Templates</a>
     </h1>
   
 
         
-        <a href="/2019/04/25/Variadic-Templates/" class="archive-article-date">
+        <a href="/Variadic-Templates" class="archive-article-date">
   	<time datetime="2019-04-25T06:22:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
 </a>
         
@@ -665,7 +792,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/Variadic-Templates/">展开全文 >></a>
+          <a class="article-more-a" href="/Variadic-Templates">展开全文 >></a>
         </p>
       
 
@@ -702,12 +829,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/24/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">八大设计原则</a>
+      <a class="article-title" href="/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99">八大设计原则</a>
     </h1>
   
 
         
-        <a href="/2019/04/24/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="archive-article-date">
+        <a href="/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99" class="archive-article-date">
   	<time datetime="2019-04-24T12:27:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
 </a>
         
@@ -723,7 +850,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>在设计模式中和重要的一个东西就是抽象。</p>
         
-          <a class="article-more-a" href="/2019/04/24/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/#more">more >></a>
+          <a class="article-more-a" href="/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99#more">more >></a>
         
       
 
@@ -747,7 +874,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/24/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">展开全文 >></a>
+          <a class="article-more-a" href="/%E5%85%AB%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99">展开全文 >></a>
         </p>
       
 
@@ -784,12 +911,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/23/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC/">禁止拷贝构造和赋值</a>
+      <a class="article-title" href="/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC">禁止拷贝构造和赋值</a>
     </h1>
   
 
         
-        <a href="/2019/04/23/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC/" class="archive-article-date">
+        <a href="/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC" class="archive-article-date">
   	<time datetime="2019-04-23T12:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
 </a>
         
@@ -802,7 +929,7 @@ var _hmt = _hmt || [];
 <p>在研究muduo库Mutex文件的发现继承了一个noncopyable类，就能达成上面的作用。</p>
 <p>查了一下，发现这是《Effective C++》中的条款6：若不想使用编译器自动生成的函数，就该明确拒绝。</p>
         
-          <a class="article-more-a" href="/2019/04/23/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC/#more">more >></a>
+          <a class="article-more-a" href="/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC#more">more >></a>
         
       
 
@@ -830,7 +957,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/23/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC/">展开全文 >></a>
+          <a class="article-more-a" href="/%E7%A6%81%E6%AD%A2%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E8%B5%8B%E5%80%BC">展开全文 >></a>
         </p>
       
 
@@ -867,12 +994,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/20/gdb%E8%B0%83%E8%AF%95/">gdb调试</a>
+      <a class="article-title" href="/gdb%E8%B0%83%E8%AF%95">gdb调试</a>
     </h1>
   
 
         
-        <a href="/2019/04/20/gdb%E8%B0%83%E8%AF%95/" class="archive-article-date">
+        <a href="/gdb%E8%B0%83%E8%AF%95" class="archive-article-date">
   	<time datetime="2019-04-20T07:50:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
 </a>
         
@@ -884,7 +1011,7 @@ var _hmt = _hmt || [];
 <p>通过实战来熟悉一下常用操作。</p>
 <p>首先需要注意的是如果要用gdb调试，在编译的时候需要加上-g选项</p>
         
-          <a class="article-more-a" href="/2019/04/20/gdb%E8%B0%83%E8%AF%95/#more">more >></a>
+          <a class="article-more-a" href="/gdb%E8%B0%83%E8%AF%95#more">more >></a>
         
       
 
@@ -912,91 +1039,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/20/gdb%E8%B0%83%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-lsof" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/20/lsof/">lsof</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/20/lsof/" class="archive-article-date">
-  	<time datetime="2019-04-20T04:14:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>lsof(list open file)是一个列出当前系统打开的文件描述符的工具。通过它可以了解感兴趣的进程打开了哪些文件描述符，或者感兴趣的文件描述符被哪些进程打开。</p>
-<p>常用选项：</p>
-<ul>
-<li>-i，显示scoket文件描述符</li>
-</ul>
-<p>使用方法： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i [46] [protocol] [@hostname|ipaddr][:service|port]</span><br></pre></td></tr></table></figure>
-
-<p>其中4表示IPv4协议，6表示IPv6协议，protocol指定传输层协议，可以是TCP或者UDP，hostname指定主机名，ipaddr指定主机的IP地址，service指定服务名，port指定端口号。|代表两个填一个就行</p>
-        
-          <a class="article-more-a" href="/2019/04/20/lsof/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">常用工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/20/lsof/">展开全文 >></a>
+          <a class="article-more-a" href="/gdb%E8%B0%83%E8%AF%95">展开全文 >></a>
         </p>
       
 
@@ -1204,6 +1247,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
             
             <div class="clearfix"></div>

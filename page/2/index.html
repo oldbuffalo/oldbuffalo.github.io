@@ -170,6 +170,90 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-lsof" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/lsof">lsof</a>
+    </h1>
+  
+
+        
+        <a href="/lsof" class="archive-article-date">
+  	<time datetime="2019-04-20T04:14:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>lsof(list open file)是一个列出当前系统打开的文件描述符的工具。通过它可以了解感兴趣的进程打开了哪些文件描述符，或者感兴趣的文件描述符被哪些进程打开。</p>
+<p>常用选项：</p>
+<ul>
+<li>-i，显示scoket文件描述符</li>
+</ul>
+<p>使用方法： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i [46] [protocol] [@hostname|ipaddr][:service|port]</span><br></pre></td></tr></table></figure>
+
+<p>其中4表示IPv4协议，6表示IPv6协议，protocol指定传输层协议，可以是TCP或者UDP，hostname指定主机名，ipaddr指定主机的IP地址，service指定服务名，port指定端口号。|代表两个填一个就行</p>
+        
+          <a class="article-more-a" href="/lsof#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">常用工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/lsof">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-服务器内核参数配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,12 +261,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE/">服务器内核参数配置</a>
+      <a class="article-title" href="/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE">服务器内核参数配置</a>
     </h1>
   
 
         
-        <a href="/2019/04/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+        <a href="/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE" class="archive-article-date">
   	<time datetime="2019-04-20T03:59:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
 </a>
         
@@ -194,7 +278,7 @@ var _hmt = _hmt || [];
 <p>几乎所有的内核模块，包括内核核心模块和驱动程序,都在/proc/sys文件系统中提供了某些配置文件以供用户调整模块的属性和行为。通常一个配置文件对应一个内核参数，文件名就是参数的名字，文件的内容就是参数的值。</p>
 <p>可以通过 sysctl -a来查看所有的内核参数。</p>
         
-          <a class="article-more-a" href="/2019/04/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE/#more">more >></a>
+          <a class="article-more-a" href="/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE#more">more >></a>
         
       
 
@@ -218,7 +302,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/20/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE">展开全文 >></a>
         </p>
       
 
@@ -255,12 +339,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/19/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+      <a class="article-title" href="/%E7%BA%BF%E7%A8%8B%E6%B1%A0">线程池</a>
     </h1>
   
 
         
-        <a href="/2019/04/19/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="archive-article-date">
+        <a href="/%E7%BA%BF%E7%A8%8B%E6%B1%A0" class="archive-article-date">
   	<time datetime="2019-04-19T12:33:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-19</time>
 </a>
         
@@ -272,7 +356,7 @@ var _hmt = _hmt || [];
 <p>采用半同步/半反应堆并发模式，这种模式下主线程负责管理监听socket和连接socket，有新的连接，主线程建立连接，有新的事件发生，插入到请求队列，工作线程从队列中取出任务并执行。</p>
 <p>首先，需要准备好一个线程池，采用模板类  模板的参数是http_coon类对象，这个类待会再介绍</p>
         
-          <a class="article-more-a" href="/2019/04/19/%E7%BA%BF%E7%A8%8B%E6%B1%A0/#more">more >></a>
+          <a class="article-more-a" href="/%E7%BA%BF%E7%A8%8B%E6%B1%A0#more">more >></a>
         
       
 
@@ -300,7 +384,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/19/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/%E7%BA%BF%E7%A8%8B%E6%B1%A0">展开全文 >></a>
         </p>
       
 
@@ -337,12 +421,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/17/%E8%BF%9B%E7%A8%8B%E6%B1%A0/">进程池</a>
+      <a class="article-title" href="/%E8%BF%9B%E7%A8%8B%E6%B1%A0">进程池</a>
     </h1>
   
 
         
-        <a href="/2019/04/17/%E8%BF%9B%E7%A8%8B%E6%B1%A0/" class="archive-article-date">
+        <a href="/%E8%BF%9B%E7%A8%8B%E6%B1%A0" class="archive-article-date">
   	<time datetime="2019-04-17T09:50:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
 </a>
         
@@ -364,7 +448,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>选择好子进程之后，主进程还需要使用某种通知机制告诉目标子进程有新任务需要处理，并传递必要的数据。最简单的方法是通过管道。</p>
         
-          <a class="article-more-a" href="/2019/04/17/%E8%BF%9B%E7%A8%8B%E6%B1%A0/#more">more >></a>
+          <a class="article-more-a" href="/%E8%BF%9B%E7%A8%8B%E6%B1%A0#more">more >></a>
         
       
 
@@ -392,7 +476,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/17/%E8%BF%9B%E7%A8%8B%E6%B1%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/%E8%BF%9B%E7%A8%8B%E6%B1%A0">展开全文 >></a>
         </p>
       
 
@@ -429,12 +513,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/25/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/">高性能服务器程序框架</a>
+      <a class="article-title" href="/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6">高性能服务器程序框架</a>
     </h1>
   
 
         
-        <a href="/2019/03/25/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/" class="archive-article-date">
+        <a href="/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6" class="archive-article-date">
   	<time datetime="2019-03-25T09:14:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
 </a>
         
@@ -449,7 +533,7 @@ var _hmt = _hmt || [];
 <li>存储单元</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/03/25/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/#more">more >></a>
+          <a class="article-more-a" href="/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6#more">more >></a>
         
       
 
@@ -477,7 +561,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/25/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6">展开全文 >></a>
         </p>
       
 
@@ -514,12 +598,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0/">网络中一些高级I/O函数</a>
+      <a class="article-title" href="/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0">网络中一些高级I/O函数</a>
     </h1>
   
 
         
-        <a href="/2019/03/24/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0/" class="archive-article-date">
+        <a href="/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0" class="archive-article-date">
   	<time datetime="2019-03-24T12:44:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
 </a>
         
@@ -535,7 +619,7 @@ var _hmt = _hmt || [];
 
 <p>dup函数创建一个新的文件描述符，新的fd和原有文件描述符file_descriptor指向同一个文件，dup返回系统当前可用的最小的整数值。</p>
         
-          <a class="article-more-a" href="/2019/03/24/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0/#more">more >></a>
+          <a class="article-more-a" href="/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0#more">more >></a>
         
       
 
@@ -563,7 +647,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/24/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0/">展开全文 >></a>
+          <a class="article-more-a" href="/%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7IO%E5%87%BD%E6%95%B0">展开全文 >></a>
         </p>
       
 
@@ -600,12 +684,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/23/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/">优秀博客整理</a>
+      <a class="article-title" href="/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86">优秀博客整理</a>
     </h1>
   
 
         
-        <a href="/2019/03/23/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/" class="archive-article-date">
+        <a href="/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86" class="archive-article-date">
   	<time datetime="2019-03-23T11:38:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-23</time>
 </a>
         
@@ -670,7 +754,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/23/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86">展开全文 >></a>
         </p>
       
 
@@ -707,12 +791,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/23/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/">虚函数表</a>
+      <a class="article-title" href="/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8">虚函数表</a>
     </h1>
   
 
         
-        <a href="/2019/03/23/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/" class="archive-article-date">
+        <a href="/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8" class="archive-article-date">
   	<time datetime="2019-03-23T05:44:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-23</time>
 </a>
         
@@ -723,7 +807,7 @@ var _hmt = _hmt || [];
         <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>C++中virtual主要是用来实现多态，一般的流程是用父类的指针指向子类的对象，然后通过父类的指针调用子类重写父类的虚函数。所谓多态，就是让父类指针有“多种形态”，换言之，就是用不变的代码实现可变的算法。比如：模板技术，RTTI技术，虚函数技术，要么是试图做到在编译时决议，要么试图做到运行时决议。</p>
 <p>virtual函数的实现又借助了虚函数指针(vptr)和虚函数表(v-table)实现。vptr的位置为编译器决定，现在很多C++的编译器保证虚函数表的指针存在于对象实例中最前面的位置。</p>
         
-          <a class="article-more-a" href="/2019/03/23/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/#more">more >></a>
+          <a class="article-more-a" href="/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8#more">more >></a>
         
       
 
@@ -747,7 +831,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/23/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8">展开全文 >></a>
         </p>
       
 
@@ -784,12 +868,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/20/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/">算法整理</a>
+      <a class="article-title" href="/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86">算法整理</a>
     </h1>
   
 
         
-        <a href="/2019/03/20/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" class="archive-article-date">
+        <a href="/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86" class="archive-article-date">
   	<time datetime="2019-03-20T10:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-20</time>
 </a>
         
@@ -802,7 +886,7 @@ var _hmt = _hmt || [];
 <p><a href="https://github.com/oldbuffalo/DayDayUp/blob/master/array/%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.cpp" target="_blank" rel="noopener">调整数组顺序使奇数位于偶数前面</a></p>
 <p><a href="https://github.com/oldbuffalo/DayDayUp/blob/master/array/%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.cpp" target="_blank" rel="noopener">顺时针打印矩阵</a></p>
         
-          <a class="article-more-a" href="/2019/03/20/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/#more">more >></a>
+          <a class="article-more-a" href="/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86#more">more >></a>
         
       
 
@@ -830,7 +914,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/20/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86">展开全文 >></a>
         </p>
       
 
@@ -867,12 +951,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/%E8%BF%9B%E7%A8%8B/">进程</a>
+      <a class="article-title" href="/%E8%BF%9B%E7%A8%8B">进程</a>
     </h1>
   
 
         
-        <a href="/2019/03/15/%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
+        <a href="/%E8%BF%9B%E7%A8%8B" class="archive-article-date">
   	<time datetime="2019-03-15T09:44:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
@@ -885,7 +969,7 @@ var _hmt = _hmt || [];
 <h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>操作系统的作用是管理计算机上的各种资源，在硬件和软件之间起到桥梁的作用。</p>
 <p>资源主要包括CPU、内存、文件系统、I/O等。</p>
         
-          <a class="article-more-a" href="/2019/03/15/%E8%BF%9B%E7%A8%8B/#more">more >></a>
+          <a class="article-more-a" href="/%E8%BF%9B%E7%A8%8B#more">more >></a>
         
       
 
@@ -913,124 +997,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux进程间通信方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">Linux进程间通信方式</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/13/linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2019-03-13T12:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="进程间通信-InterProcess-Communication"><a href="#进程间通信-InterProcess-Communication" class="headerlink" title="进程间通信(InterProcess Communication)"></a>进程间通信(InterProcess Communication)</h2><p>当多个进程同时访问系统上的某个资源的时候，比如同时写一个数据库的某条记录，或者同时修改某个文件，就需要考虑进程同步的问题，确保任一时刻只有一个进程可以拥有对资源的独占式访问。</p>
-<p>程序对共享资源访问的代码只是很短的一段，但就是这一段代码引发了进程之间的竞态条件，那么这段代码称为关键段，也叫临界区。</p>
-<p>进程间通信大体思路有两种：1.数据传递(通过内核)  2.共享内存</p>
-<h4 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int pipe(int fd[2]);   &#x2F;&#x2F;成功返回0  出错返回-1</span><br></pre></td></tr></table></figure>
-
-<p>局限性：</p>
-<ul>
-<li><p>半双工(数据只能在一个方向上流动)。现在UNIX域套接字默认是全双工的(通过socketpair创建)</p>
-</li>
-<li><p>只能在具有公共祖先的两个进程之间使用。一般都是一个进程先调用pipe，然后调用fork</p>
-<ul>
-<li>父进程把文件描述符传给子进程之后父子进程 之间通信</li>
-<li>也可以父进程fork两次，把文件描述符传给两个子进程，然后两个子进程之间通信</li>
-</ul>
-</li>
-<li><p>缓冲区有限（在管道创建时，为缓冲区分配一个页面大小），常量PIPE_BUF决定</p>
-</li>
-</ul>
-<p><img src="/pic/fork%E4%B9%8B%E5%90%8E%E7%9A%84%E7%AE%A1%E9%81%93.png" alt=""></p>
-<p>fork之后做什么取决于我们想要的数据流方向。对于从父进程到子进程的管道，父进程关闭管道的读端(fd[0])，子进程关闭管道的写端(fd[1])。</p>
-<p><img src="/pic/%E4%BB%8E%E7%88%B6%E5%88%B0%E5%AD%90%E7%9A%84%E7%AE%A1%E9%81%93.png" alt=""></p>
-<p>使用注意事项(假设都是阻塞I/O操作)：</p>
-<ul>
-<li>当读一个写端被关闭的管道(引用计数为0)，在所有数据都被读取后，read返回0，表示文件结束。</li>
-<li>如果写端没有被关闭，这时有进程从管道读数据，那么管道中剩余的数据被读取完之后，再次调用read将阻塞，直到持有写端的进程向管道中写入数据</li>
-<li>当对于一个读端被关闭的管道进行写操作，将产生SIGPIPE信号，默认动作终止进程。如果忽略该信号或者捕捉该信号并从其处理程序返回，write返回-1，并设置errno为EPIPE</li>
-<li>如果读端没有被关闭，持有读端的进程也没有读数据，这是写端向管道写数据，管道被写满时再次调用write将阻塞，知道有数据被read才能继续写入</li>
-</ul>
-<p>PIPE_BUF规定了内核的管道缓冲区大小。</p>
-<p>如果对管道调用write，并且要求写的字节数小于等于PIPE_BUF，则此操作不会与其他进程对同一管道(或者FIFO)的write交叉进行。</p>
-<p>如果有多个进程同时写一个管道(或者FIFO)，而且要求写的字节数超过PIPE_BUF,那么所写的数据可能会与其他进程所写的数据相互交叉。   //有待实验</p>
-<p>用pathconf或者fpathconf函数可以确定PIPE_BUF的值。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">进程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">apue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/13/linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/%E8%BF%9B%E7%A8%8B">展开全文 >></a>
         </p>
       
 
@@ -1238,6 +1205,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
             
             <div class="clearfix"></div>
