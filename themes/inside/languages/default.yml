@@ -1,0 +1,26 @@
+menu:
+  home: Home
+  archives: Archives
+  categories: Categories
+  tags: Tags
+  about: About
+
+title:
+  archives: Archive
+  categories: Category
+  tags: Tag
+
+post:
+  copyright:
+    author: Author
+    link: Link
+    license: Copyright
+    published: Published
+    updated: Updated
+
+reward:
+  donate: Buy me a cup of coffee ☕.
+  paypal: Paypal
+  wechat: WeChat
+  alipay: 支
+  bitcoin: Bitcoin
