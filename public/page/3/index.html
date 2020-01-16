@@ -170,6 +170,123 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux进程间通信方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">Linux进程间通信方式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2019-03-13T12:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="进程间通信-InterProcess-Communication"><a href="#进程间通信-InterProcess-Communication" class="headerlink" title="进程间通信(InterProcess Communication)"></a>进程间通信(InterProcess Communication)</h2><p>当多个进程同时访问系统上的某个资源的时候，比如同时写一个数据库的某条记录，或者同时修改某个文件，就需要考虑进程同步的问题，确保任一时刻只有一个进程可以拥有对资源的独占式访问。</p>
+<p>程序对共享资源访问的代码只是很短的一段，但就是这一段代码引发了进程之间的竞态条件，那么这段代码称为关键段，也叫临界区。</p>
+<p>进程间通信大体思路有两种：1.数据传递(通过内核)  2.共享内存</p>
+<h4 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int pipe(int fd[2]);   &#x2F;&#x2F;成功返回0  出错返回-1</span><br></pre></td></tr></table></figure>
+
+<p>局限性：</p>
+<ul>
+<li><p>半双工(数据只能在一个方向上流动)。现在UNIX域套接字默认是全双工的(通过socketpair创建)</p>
+</li>
+<li><p>只能在具有公共祖先的两个进程之间使用。一般都是一个进程先调用pipe，然后调用fork</p>
+<ul>
+<li>父进程把文件描述符传给子进程之后父子进程 之间通信</li>
+<li>也可以父进程fork两次，把文件描述符传给两个子进程，然后两个子进程之间通信</li>
+</ul>
+</li>
+<li><p>缓冲区有限（在管道创建时，为缓冲区分配一个页面大小），常量PIPE_BUF决定</p>
+</li>
+</ul>
+<p><img src="/pic/fork%E4%B9%8B%E5%90%8E%E7%9A%84%E7%AE%A1%E9%81%93.png" alt=""></p>
+<p>fork之后做什么取决于我们想要的数据流方向。对于从父进程到子进程的管道，父进程关闭管道的读端(fd[0])，子进程关闭管道的写端(fd[1])。</p>
+<p><img src="/pic/%E4%BB%8E%E7%88%B6%E5%88%B0%E5%AD%90%E7%9A%84%E7%AE%A1%E9%81%93.png" alt=""></p>
+<p>使用注意事项(假设都是阻塞I/O操作)：</p>
+<ul>
+<li>当读一个写端被关闭的管道(引用计数为0)，在所有数据都被读取后，read返回0，表示文件结束。</li>
+<li>如果写端没有被关闭，这时有进程从管道读数据，那么管道中剩余的数据被读取完之后，再次调用read将阻塞，直到持有写端的进程向管道中写入数据</li>
+<li>当对于一个读端被关闭的管道进行写操作，将产生SIGPIPE信号，默认动作终止进程。如果忽略该信号或者捕捉该信号并从其处理程序返回，write返回-1，并设置errno为EPIPE</li>
+<li>如果读端没有被关闭，持有读端的进程也没有读数据，这是写端向管道写数据，管道被写满时再次调用write将阻塞，知道有数据被read才能继续写入</li>
+</ul>
+<p>PIPE_BUF规定了内核的管道缓冲区大小。</p>
+<p>如果对管道调用write，并且要求写的字节数小于等于PIPE_BUF，则此操作不会与其他进程对同一管道(或者FIFO)的write交叉进行。</p>
+<p>如果有多个进程同时写一个管道(或者FIFO)，而且要求写的字节数超过PIPE_BUF,那么所写的数据可能会与其他进程所写的数据相互交叉。   //有待实验</p>
+<p>用pathconf或者fpathconf函数可以确定PIPE_BUF的值。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">进程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">apue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-socket选项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,12 +294,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/socket%E9%80%89%E9%A1%B9/">socket选项</a>
+      <a class="article-title" href="/2019/03/socket%E9%80%89%E9%A1%B9/">socket选项</a>
     </h1>
   
 
         
-        <a href="/2019/03/13/socket%E9%80%89%E9%A1%B9/" class="archive-article-date">
+        <a href="/2019/03/socket%E9%80%89%E9%A1%B9/" class="archive-article-date">
   	<time datetime="2019-03-13T09:15:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
 </a>
         
@@ -196,7 +313,7 @@ var _hmt = _hmt || [];
 <p>int setsockopt(int sockfd,int level,int option_name,const void* option_value,socklen_t option_len);</p>
 <p>level:操作那个协议  IPv4/IPv6/TCP…</p>
         
-          <a class="article-more-a" href="/2019/03/13/socket%E9%80%89%E9%A1%B9/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/socket%E9%80%89%E9%A1%B9/#more">more >></a>
         
       
 
@@ -224,7 +341,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/13/socket%E9%80%89%E9%A1%B9/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/socket%E9%80%89%E9%A1%B9/">展开全文 >></a>
         </p>
       
 
@@ -261,12 +378,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/">Linux网络编程流程</a>
+      <a class="article-title" href="/2019/03/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/">Linux网络编程流程</a>
     </h1>
   
 
         
-        <a href="/2019/03/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/" class="archive-article-date">
+        <a href="/2019/03/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/" class="archive-article-date">
   	<time datetime="2019-03-12T11:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-12</time>
 </a>
         
@@ -279,7 +396,7 @@ var _hmt = _hmt || [];
 <p>自Linux内核2.6.17起，type参数可以接收SOCK_NONBLOCK和SOCK_CLOEXEC</p>
 <p>分别表示将新创建的socket设置为非阻塞(fcntl也能完成)，以及用fork调用创建子进程时在子进程中关闭该socket</p>
         
-          <a class="article-more-a" href="/2019/03/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/#more">more >></a>
         
       
 
@@ -311,7 +428,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/12/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%B5%81%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -348,12 +465,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/12/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a>
+      <a class="article-title" href="/2019/03/HTTP%E5%8D%8F%E8%AE%AE/">HTTP协议</a>
     </h1>
   
 
         
-        <a href="/2019/03/12/HTTP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+        <a href="/2019/03/HTTP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
   	<time datetime="2019-03-12T07:58:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-12</time>
 </a>
         
@@ -408,7 +525,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/12/HTTP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/HTTP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
         </p>
       
 
@@ -445,12 +562,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/10/HTTP%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">HTTP代理服务器</a>
+      <a class="article-title" href="/2019/03/HTTP%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">HTTP代理服务器</a>
     </h1>
   
 
         
-        <a href="/2019/03/10/HTTP%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
+        <a href="/2019/03/HTTP%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
   	<time datetime="2019-03-10T12:20:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-10</time>
 </a>
         
@@ -504,7 +621,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/10/HTTP%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/HTTP%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
         </p>
       
 
@@ -541,12 +658,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/10/TCP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">TCP数据传输</a>
+      <a class="article-title" href="/2019/03/TCP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">TCP数据传输</a>
     </h1>
   
 
         
-        <a href="/2019/03/10/TCP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" class="archive-article-date">
+        <a href="/2019/03/TCP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" class="archive-article-date">
   	<time datetime="2019-03-10T08:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-10</time>
 </a>
         
@@ -609,7 +726,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/10/TCP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/TCP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">展开全文 >></a>
         </p>
       
 
@@ -646,12 +763,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/07/IP%E5%8D%8F%E8%AE%AE/">IP协议</a>
+      <a class="article-title" href="/2019/03/IP%E5%8D%8F%E8%AE%AE/">IP协议</a>
     </h1>
   
 
         
-        <a href="/2019/03/07/IP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+        <a href="/2019/03/IP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
   	<time datetime="2019-03-07T03:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-07</time>
 </a>
         
@@ -677,7 +794,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>无论哪种情况，发送端的IP模块一旦检测到IP数据报发送失败，就通知上层协议发送失败，而不会试图重传。因此，使用IP服务的上层协议(比如TCP)需要自己实现数据确认、超时重传等机制来达到可靠传输的目的。</p>
         
-          <a class="article-more-a" href="/2019/03/07/IP%E5%8D%8F%E8%AE%AE/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/IP%E5%8D%8F%E8%AE%AE/#more">more >></a>
         
       
 
@@ -705,7 +822,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/07/IP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/IP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
         </p>
       
 
@@ -742,12 +859,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/07/DNS/">DNS</a>
+      <a class="article-title" href="/2019/03/DNS/">DNS</a>
     </h1>
   
 
         
-        <a href="/2019/03/07/DNS/" class="archive-article-date">
+        <a href="/2019/03/DNS/" class="archive-article-date">
   	<time datetime="2019-03-07T01:23:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-07</time>
 </a>
         
@@ -757,7 +874,7 @@ var _hmt = _hmt || [];
       
         <h2 id="DNS工作原理"><a href="#DNS工作原理" class="headerlink" title="DNS工作原理"></a>DNS工作原理</h2><p>DNS是一套分布式的域名服务系统。每个DNS服务器上都存放着大量的机器名和IP地址的映射，并且是动态更新的。众多网络客户端程序都使用DNS协议来向DNS服务器查询目标主机的IP地址。</p>
         
-          <a class="article-more-a" href="/2019/03/07/DNS/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/DNS/#more">more >></a>
         
       
 
@@ -785,7 +902,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/07/DNS/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/DNS/">展开全文 >></a>
         </p>
       
 
@@ -822,12 +939,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/06/tcpdump/">tcpdump</a>
+      <a class="article-title" href="/2019/03/tcpdump/">tcpdump</a>
     </h1>
   
 
         
-        <a href="/2019/03/06/tcpdump/" class="archive-article-date">
+        <a href="/2019/03/tcpdump/" class="archive-article-date">
   	<time datetime="2019-03-06T13:18:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
 </a>
         
@@ -904,7 +1021,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/06/tcpdump/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/tcpdump/">展开全文 >></a>
         </p>
       
 
@@ -941,12 +1058,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/06/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/">ARP协议分析</a>
+      <a class="article-title" href="/2019/03/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/">ARP协议分析</a>
     </h1>
   
 
         
-        <a href="/2019/03/06/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/" class="archive-article-date">
+        <a href="/2019/03/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/" class="archive-article-date">
   	<time datetime="2019-03-06T12:22:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
 </a>
         
@@ -957,7 +1074,7 @@ var _hmt = _hmt || [];
         <h2 id="ARP协议工作原理"><a href="#ARP协议工作原理" class="headerlink" title="ARP协议工作原理"></a>ARP协议工作原理</h2><p>ARP协议是TCP/IP栈中数据链路层很重要的一个协议，能实现任意网络层地址到任意物理地址的转换，比如ip地址到MAC地址的转换。ARP通信在TCP连接之前就建立完成。</p>
 <p>工作原理：主机向自己所在的网络广播一个ARP请求，该请求包含目标机器的网络地址。此网络中的其他极其都将收到这个请求，但只有被请求的目标机器会回应一个ARP应答，其中包含自己的物理地址。</p>
         
-          <a class="article-more-a" href="/2019/03/06/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/#more">more >></a>
         
       
 
@@ -985,95 +1102,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/06/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-epoll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/epoll/">epoll</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/01/epoll/" class="archive-article-date">
-  	<time datetime="2018-12-01T13:52:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="模型特点"><a href="#模型特点" class="headerlink" title="模型特点"></a>模型特点</h2><p>1.不同于select和poll,epoll采用回调函数的方式获取文件描述符的就绪状态(主动通知)<br>2.采用红黑树管理epoll_event结构体<br>3.内核维护一个就绪队列，只传出就绪的文件描述符<br>4.有ET(边缘触发)和LT(水平触发)，而select和poll都只有LT<br>5.同样也突破了select并发量的限制</p>
-        
-          <a class="article-more-a" href="/2018/12/01/epoll/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux高性能服务器编程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IO复用</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/01/epoll/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/ARP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90/">展开全文 >></a>
         </p>
       
 
@@ -1281,6 +1310,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
             
             <div class="clearfix"></div>

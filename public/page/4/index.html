@@ -170,29 +170,29 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-poll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-epoll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/poll/">poll</a>
+      <a class="article-title" href="/2018/12/epoll/">epoll</a>
     </h1>
   
 
         
-        <a href="/2018/11/30/poll/" class="archive-article-date">
-  	<time datetime="2018-11-30T13:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+        <a href="/2018/12/epoll/" class="archive-article-date">
+  	<time datetime="2018-12-01T13:52:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="模型特点"><a href="#模型特点" class="headerlink" title="模型特点"></a>模型特点</h2><p>1.和select类似，但是突破了并发量的限制。<br>2.采用的依旧是轮询<br>3.采用struct pollfd结构体记录fd的状态</p>
+        <h2 id="模型特点"><a href="#模型特点" class="headerlink" title="模型特点"></a>模型特点</h2><p>1.不同于select和poll,epoll采用回调函数的方式获取文件描述符的就绪状态(主动通知)<br>2.采用红黑树管理epoll_event结构体<br>3.内核维护一个就绪队列，只传出就绪的文件描述符<br>4.有ET(边缘触发)和LT(水平触发)，而select和poll都只有LT<br>5.同样也突破了select并发量的限制</p>
         
-          <a class="article-more-a" href="/2018/11/30/poll/#more">more >></a>
+          <a class="article-more-a" href="/2018/12/epoll/#more">more >></a>
         
       
 
@@ -228,7 +228,95 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/poll/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/epoll/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-poll" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/poll/">poll</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/poll/" class="archive-article-date">
+  	<time datetime="2018-11-30T13:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="模型特点"><a href="#模型特点" class="headerlink" title="模型特点"></a>模型特点</h2><p>1.和select类似，但是突破了并发量的限制。<br>2.采用的依旧是轮询<br>3.采用struct pollfd结构体记录fd的状态</p>
+        
+          <a class="article-more-a" href="/2018/11/poll/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linux高性能服务器编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IO复用</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/poll/">展开全文 >></a>
         </p>
       
 
@@ -265,12 +353,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/28/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/">Linux下的select模型</a>
+      <a class="article-title" href="/2018/11/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/">Linux下的select模型</a>
     </h1>
   
 
         
-        <a href="/2018/11/28/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
+        <a href="/2018/11/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
   	<time datetime="2018-11-28T13:51:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
 </a>
         
@@ -280,7 +368,7 @@ var _hmt = _hmt || [];
       
         <h2 id="模型特点"><a href="#模型特点" class="headerlink" title="模型特点"></a>模型特点</h2><p>1.select能监听的文件描述符个数受限于FD_SETSIZE,一般为1024<br>2.采用的是轮询的工作原理<br>3.文件描述符采用fd_set类型管理</p>
         
-          <a class="article-more-a" href="/2018/11/28/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/#more">more >></a>
         
       
 
@@ -316,7 +404,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/28/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/linux%E4%B8%8B%E7%9A%84select%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
         </p>
       
 
@@ -353,12 +441,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/27/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/">linux下的多进程服务器模型</a>
+      <a class="article-title" href="/2018/11/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/">linux下的多进程服务器模型</a>
     </h1>
   
 
         
-        <a href="/2018/11/27/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
+        <a href="/2018/11/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
   	<time datetime="2018-11-27T13:42:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
 </a>
         
@@ -369,7 +457,7 @@ var _hmt = _hmt || [];
         <h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>服务器端完成的工作是将客户端传来的字符串，小写变大写，再返回给客户端<br>父进程负责accept，每来一个connect就fork出一个子进程专门处理对应客户端的请求。</p>
 <h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><p>1.fork子进程的时候继承父进程的文件描述符，需要关闭。<br>2.客户端退出之后，对应的子进程也就终止，需要回收子进程。<br>3.在回收子进程的过程中，利用信号捕捉SIGCHLD。在执行信号捕捉函数的时候，会导致accept调用失败。<br>4.在多个子进程同时退出的时候，需要用waitpid循环回收。<br>5.创建一根线程专门回收的时候，需要在主线程对SIGCHLD信号设置屏蔽字</p>
         
-          <a class="article-more-a" href="/2018/11/27/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/#more">more >></a>
         
       
 
@@ -401,7 +489,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/27/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/linux%E4%B8%8B%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
         </p>
       
 
@@ -438,12 +526,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/">Linux下的网络I/O模型</a>
+      <a class="article-title" href="/2018/11/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/">Linux下的网络I/O模型</a>
     </h1>
   
 
         
-        <a href="/2018/11/26/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/" class="archive-article-date">
+        <a href="/2018/11/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/" class="archive-article-date">
   	<time datetime="2018-11-26T12:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
 </a>
         
@@ -462,7 +550,7 @@ var _hmt = _hmt || [];
 <p>2.阻塞/非阻塞</p>
 <p>阻塞和非阻塞关心的是调用发生之后获取调用结果时的状态。<br>阻塞是指调用结果返回之前，当前线程挂起，知道结果返回。<br>非阻塞则不挂起当前线程，采用轮询的方式查看调用结果是否返回。</p>
         
-          <a class="article-more-a" href="/2018/11/26/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/#more">more >></a>
         
       
 
@@ -490,7 +578,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/Linux%E4%B8%8B%E7%9A%84%E7%BD%91%E7%BB%9CIO%E6%A8%A1%E5%9E%8B%20/">展开全文 >></a>
         </p>
       
 
@@ -527,12 +615,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/17/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">拥塞控制</a>
+      <a class="article-title" href="/2018/11/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">拥塞控制</a>
     </h1>
   
 
         
-        <a href="/2018/11/17/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="archive-article-date">
+        <a href="/2018/11/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="archive-article-date">
   	<time datetime="2018-11-17T15:22:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
 </a>
         
@@ -545,7 +633,7 @@ var _hmt = _hmt || [];
 <p>拥塞控制是一个全局性的过程，面对的是整个网络，不用于端到端的流量控制。</p>
 <p>拥塞控制的作用就是提高网络利用率，降低丢包率，并保证网络资源对每条数据流的公平性。</p>
         
-          <a class="article-more-a" href="/2018/11/17/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/#more">more >></a>
         
       
 
@@ -573,7 +661,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/17/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">展开全文 >></a>
         </p>
       
 
@@ -610,12 +698,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/17/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+      <a class="article-title" href="/2018/11/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
     </h1>
   
 
         
-        <a href="/2018/11/17/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="archive-article-date">
+        <a href="/2018/11/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="archive-article-date">
   	<time datetime="2018-11-17T14:07:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
 </a>
         
@@ -628,7 +716,7 @@ var _hmt = _hmt || [];
 <h2 id="滑动窗口-rwnd"><a href="#滑动窗口-rwnd" class="headerlink" title="滑动窗口(rwnd)"></a>滑动窗口(rwnd)</h2><p>发送端和接收端都维护一个数据帧的序列，发送方的窗口大小由接收方确定，目的在于控制发送速度，避免接收方缓存不够大，导致溢出丢包，同时控制流量避免网络拥塞。</p>
 <p>滑动窗口允许发送方不必等待接收方的确认就可以连续发送多个数据包，提高了传输效率，同时由于窗口的存在，也限制了流量，达到控制的目的。</p>
         
-          <a class="article-more-a" href="/2018/11/17/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/#more">more >></a>
         
       
 
@@ -656,7 +744,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/17/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">展开全文 >></a>
         </p>
       
 
@@ -693,12 +781,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/17/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">三次握手四次挥手</a>
+      <a class="article-title" href="/2018/11/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">三次握手四次挥手</a>
     </h1>
   
 
         
-        <a href="/2018/11/17/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" class="archive-article-date">
+        <a href="/2018/11/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" class="archive-article-date">
   	<time datetime="2018-11-17T12:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
 </a>
         
@@ -711,7 +799,7 @@ var _hmt = _hmt || [];
 <h2 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h2><p>准备工作：服务器1.创建socket 2.bind 3. listen 4.阻塞在accept,等待客户端的连接<br>客户端调用connet请求连接</p>
 <p><img src="/pic/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.png" alt="三次握手"></p>
         
-          <a class="article-more-a" href="/2018/11/17/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/#more">more >></a>
         
       
 
@@ -743,7 +831,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/17/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">展开全文 >></a>
         </p>
       
 
@@ -780,12 +868,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/17/TCP%E5%8D%8F%E8%AE%AE/">TCP协议</a>
+      <a class="article-title" href="/2018/11/TCP%E5%8D%8F%E8%AE%AE/">TCP协议</a>
     </h1>
   
 
         
-        <a href="/2018/11/17/TCP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+        <a href="/2018/11/TCP%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
   	<time datetime="2018-11-17T11:50:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
 </a>
         
@@ -806,7 +894,7 @@ var _hmt = _hmt || [];
 <li>拥塞控制</li>
 </ul>
         
-          <a class="article-more-a" href="/2018/11/17/TCP%E5%8D%8F%E8%AE%AE/#more">more >></a>
+          <a class="article-more-a" href="/2018/11/TCP%E5%8D%8F%E8%AE%AE/#more">more >></a>
         
       
 
@@ -838,7 +926,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/17/TCP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/TCP%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
         </p>
       
 
@@ -875,12 +963,12 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">设计模式之简单工厂</a>
+      <a class="article-title" href="/2018/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">设计模式之简单工厂</a>
     </h1>
   
 
         
-        <a href="/2018/11/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/" class="archive-article-date">
+        <a href="/2018/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/" class="archive-article-date">
   	<time datetime="2018-11-12T12:12:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
 </a>
         
@@ -931,100 +1019,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-线程同步经典问题练习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/09/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E7%BB%83%E4%B9%A0/">线程同步经典问题练习</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/09/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E7%BB%83%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2018-11-09T11:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="生产者-消费者"><a href="#生产者-消费者" class="headerlink" title="生产者-消费者"></a>生产者-消费者</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>若干个生产者在生产产品，这些产品将提供给若干个消费者去消费，为了使生产者和消费者能并发执行，在两者之间设置一个具有多个缓冲区的缓冲池，生产者将它生产的产品放入一个缓冲区中，消费者可以从缓冲区中取走产品进行消费</p>
-<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>同步: 1.缓冲区满时  生产者不能生产  阻塞  2.缓冲区空时  消费者不能消费  阻塞<br>互斥:  生产和消费是互斥行为<br>信号量+关键段</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;windows.h&gt;</span><br><span class="line">#include&lt;process.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">&#x2F;*两个生产者 两个消费者  四块缓冲区*&#x2F;</span><br><span class="line">const int GoodsMax &#x3D; 10;</span><br><span class="line">CRITICAL_SECTION cs;</span><br><span class="line">HANDLE hSemaphore_notFull;</span><br><span class="line">HANDLE hSemaphore_notempty;</span><br><span class="line">unsigned __stdcall ProducerProc( void * );</span><br><span class="line">unsigned __stdcall ConsumerProc( void * );</span><br><span class="line">const int bufsize &#x3D; 4;</span><br><span class="line">int buf[bufsize]; &#x2F;&#x2F;用数组实现循环队列模拟缓冲区</span><br><span class="line">int g_x,g_y;</span><br><span class="line">int goods &#x3D; 1; &#x2F;&#x2F;模拟产品</span><br><span class="line">bool Pro_exit_flag &#x3D; FALSE;</span><br><span class="line">bool Con_exit_flag &#x3D; FALSE;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	InitializeCriticalSection(&amp;cs);</span><br><span class="line">	hSemaphore_notFull &#x3D; CreateSemaphore(NULL,4,4,NULL);</span><br><span class="line">	hSemaphore_notempty &#x3D; CreateSemaphore(NULL,0,4,NULL);</span><br><span class="line">	HANDLE handle[4];</span><br><span class="line">	handle[0] &#x3D; (HANDLE)_beginthreadex(NULL,0,ProducerProc,NULL,0,NULL);</span><br><span class="line">	handle[1] &#x3D; (HANDLE)_beginthreadex(NULL,0,ProducerProc,NULL,0,NULL);</span><br><span class="line">	handle[2] &#x3D; (HANDLE)_beginthreadex(NULL,0,ConsumerProc,NULL,0,NULL);</span><br><span class="line">	handle[3] &#x3D; (HANDLE)_beginthreadex(NULL,0,ConsumerProc,NULL,0,NULL);</span><br><span class="line">	WaitForMultipleObjects(4,handle,TRUE,INFINITE);</span><br><span class="line">	CloseHandle(hSemaphore_notFull);</span><br><span class="line">	CloseHandle(hSemaphore_notempty);</span><br><span class="line">	CloseHandle(handle[0]);</span><br><span class="line">	CloseHandle(handle[1]);</span><br><span class="line">	CloseHandle(handle[2]);</span><br><span class="line">	CloseHandle(handle[3]);</span><br><span class="line">	DeleteCriticalSection(&amp;cs);</span><br><span class="line"></span><br><span class="line">	getchar();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">unsigned __stdcall ProducerProc(void* lparma)&#123;</span><br><span class="line"></span><br><span class="line">	while(1)&#123;</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;等待有空余的缓冲区，阻塞在满的时候</span><br><span class="line">		WaitForSingleObject(hSemaphore_notFull,INFINITE);</span><br><span class="line"></span><br><span class="line">		EnterCriticalSection(&amp;cs);</span><br><span class="line">		if(!Pro_exit_flag)</span><br><span class="line">		&#123;</span><br><span class="line">			buf[g_x] &#x3D; goods;</span><br><span class="line">			printf(&quot;%d生产者将数据%d放入缓冲区%d\n&quot;,GetCurrentThreadId(),goods,g_x);</span><br><span class="line">		&#125;</span><br><span class="line">		if(goods &#x3D;&#x3D; GoodsMax)</span><br><span class="line">		&#123;</span><br><span class="line">		   LeaveCriticalSection(&amp;cs);</span><br><span class="line">		   &#x2F;&#x2F;通知另一个生产者线程退出，工作已经结束了</span><br><span class="line">		   ReleaseSemaphore(hSemaphore_notFull,1,NULL);</span><br><span class="line"></span><br><span class="line">		   ReleaseSemaphore(hSemaphore_notempty,1,NULL);&#x2F;&#x2F;通知消费者消费</span><br><span class="line">		   Pro_exit_flag &#x3D; TRUE;</span><br><span class="line">		   break;</span><br><span class="line">		&#125;</span><br><span class="line">		goods++;</span><br><span class="line">		g_x &#x3D; (g_x+1)%bufsize;</span><br><span class="line">		LeaveCriticalSection(&amp;cs);</span><br><span class="line">		</span><br><span class="line">		ReleaseSemaphore(hSemaphore_notempty,1,NULL); &#x2F;&#x2F;通知消费可以消费了</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;************%d生产者已经完美地结束了工作\n&quot;,GetCurrentThreadId());</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">unsigned __stdcall ConsumerProc( void * lparma)&#123;</span><br><span class="line"></span><br><span class="line">	while(1)&#123;</span><br><span class="line">		&#x2F;&#x2F;等待缓冲区有东西</span><br><span class="line">		WaitForSingleObject(hSemaphore_notempty,INFINITE);	</span><br><span class="line">		EnterCriticalSection(&amp;cs);</span><br><span class="line">		if(!Con_exit_flag)</span><br><span class="line">			printf(&quot;\t%d消费者将数据%d从缓冲区%d拿出\n&quot;,GetCurrentThreadId(),buf[g_y],g_y);</span><br><span class="line">		if(buf[g_y] &#x3D;&#x3D; GoodsMax)&#123;</span><br><span class="line">			 LeaveCriticalSection(&amp;cs);	 </span><br><span class="line">			 ReleaseSemaphore(hSemaphore_notempty,1,NULL);  &#x2F;&#x2F;无故释放一个信号量告诉另一个线程退出</span><br><span class="line">			 Con_exit_flag &#x3D; TRUE;</span><br><span class="line">			 break;</span><br><span class="line">		&#125;</span><br><span class="line">		g_y &#x3D; (g_y+1)%bufsize;</span><br><span class="line">		LeaveCriticalSection(&amp;cs);</span><br><span class="line"></span><br><span class="line">		Sleep(20);</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;通知生产者生产</span><br><span class="line">		ReleaseSemaphore(hSemaphore_notFull,1,NULL);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	printf(&quot;**********%d消费者完美地结束了工作\n&quot;,GetCurrentThreadId());</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="读者写者"><a href="#读者写者" class="headerlink" title="读者写者"></a>读者写者</h2><h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>有一个写者很多读者，多个读者可以同时读文件，但写者在写文件时不允许有读者在读文件，同样有读者在读文件时写者也不去能写文件。</p>
-<h3 id="问题分析-1"><a href="#问题分析-1" class="headerlink" title="问题分析"></a>问题分析</h3><p>同步:1.写者要等到没有读者时才能去写文件 2.所有读者要等待写者完成写文件后才能去读文件</p>
-<p>人工事件+自动事件</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;windows.h&gt;</span><br><span class="line">#include&lt;process.h&gt;</span><br><span class="line">&#x2F;*读者写者   有一个写者和多个读者  写和读不能同时进行  可以同时读*&#x2F;</span><br><span class="line">&#x2F;*利用事件进行同步通知*&#x2F;</span><br><span class="line">&#x2F;*用一个变量记录正在读的个数  第一个读的线程设置不能写入标志，最后一个读完的线程解除不能写入标志*&#x2F;</span><br><span class="line">HANDLE g_hEventRead,g_hEventWrite;</span><br><span class="line">CRITICAL_SECTION cs;</span><br><span class="line">int g_ReaderNum;</span><br><span class="line"></span><br><span class="line">unsigned __stdcall WriteProc( void * );</span><br><span class="line">unsigned __stdcall ReadProc( void * );</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	g_hEventRead &#x3D; CreateEvent(NULL,TRUE,TRUE,NULL);	&#x2F;&#x2F;有事件  人工</span><br><span class="line">	g_hEventWrite &#x3D; CreateEvent(NULL,FALSE,FALSE,NULL);</span><br><span class="line">	InitializeCriticalSection(&amp;cs);</span><br><span class="line">	HANDLE handle[5];</span><br><span class="line"></span><br><span class="line">	handle[0] &#x3D; (HANDLE)_beginthreadex(NULL,0,WriteProc,NULL,0,NULL);</span><br><span class="line">	handle[1] &#x3D; (HANDLE)_beginthreadex(NULL,0,ReadProc,NULL,0,NULL);</span><br><span class="line">	handle[2] &#x3D; (HANDLE)_beginthreadex(NULL,0,ReadProc,NULL,0,NULL);</span><br><span class="line"></span><br><span class="line">	Sleep(50);</span><br><span class="line">	handle[3] &#x3D; (HANDLE)_beginthreadex(NULL,0,ReadProc,NULL,0,NULL);</span><br><span class="line">	handle[4] &#x3D; (HANDLE)_beginthreadex(NULL,0,ReadProc,NULL,0,NULL);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	WaitForMultipleObjects(5,handle,TRUE,INFINITE);</span><br><span class="line">	for(int i &#x3D; 0;i&lt;5;i++)</span><br><span class="line">		CloseHandle(handle[i]);</span><br><span class="line">	CloseHandle(g_hEventRead);</span><br><span class="line">	CloseHandle(g_hEventWrite);</span><br><span class="line">	DeleteCriticalSection(&amp;cs);</span><br><span class="line">	getchar();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unsigned __stdcall WriteProc( void * lparma)&#123;</span><br><span class="line"></span><br><span class="line">		printf(&quot;写者线程等待写操作\n&quot;,GetCurrentThreadId());</span><br><span class="line">		WaitForSingleObject(g_hEventWrite,INFINITE);</span><br><span class="line"></span><br><span class="line">		ResetEvent(g_hEventRead);	  &#x2F;&#x2F;控制不能进行读操作</span><br><span class="line">		printf(&quot;写者线程正在进行写操作\n&quot;);</span><br><span class="line"></span><br><span class="line">		Sleep(rand()%100);</span><br><span class="line">		printf(&quot;写者线程结束写操作\n&quot;);</span><br><span class="line"></span><br><span class="line">		SetEvent(g_hEventRead);&#x2F;&#x2F;告诉读者可以开始读了</span><br><span class="line"></span><br><span class="line">		return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">unsigned __stdcall ReadProc( void *lparma )&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		&#x2F;*由于读者等待的是人工事件 一旦有事件并且不置成无信号的话  就可以让线程共享*&#x2F;</span><br><span class="line">		printf(&quot;%d读者线程等待进行读操作\n&quot;,GetCurrentThreadId());</span><br><span class="line">		WaitForSingleObject(g_hEventRead,INFINITE);</span><br><span class="line">		</span><br><span class="line">		EnterCriticalSection(&amp;cs);</span><br><span class="line">		g_ReaderNum++;</span><br><span class="line">		if(g_ReaderNum &#x3D;&#x3D; 1)		&#x2F;&#x2F;一旦有读者开始读 就不让写者工作</span><br><span class="line">			ResetEvent(g_hEventWrite);</span><br><span class="line">		LeaveCriticalSection(&amp;cs);</span><br><span class="line">		</span><br><span class="line">		printf(&quot;%d读者线程正在进行读操作\n&quot;,GetCurrentThreadId());</span><br><span class="line"></span><br><span class="line">		Sleep(rand()%100);</span><br><span class="line">		printf(&quot;%d读者线程结束读操作\n&quot;,GetCurrentThreadId());</span><br><span class="line">		EnterCriticalSection(&amp;cs);	</span><br><span class="line">		g_ReaderNum--;</span><br><span class="line">		if(g_ReaderNum &#x3D;&#x3D; 0)	   &#x2F;&#x2F;读者全部读完之后，告诉写者可以工作了</span><br><span class="line">			SetEvent(g_hEventWrite);</span><br><span class="line">		LeaveCriticalSection(&amp;cs);</span><br><span class="line"></span><br><span class="line">		return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>还可以通过读写锁实现</p>
-<h5 id="读写锁-SRWLOCK"><a href="#读写锁-SRWLOCK" class="headerlink" title="读写锁(SRWLOCK)"></a>读写锁(SRWLOCK)</h5><p>读写锁在对资源进行保护的同时，还能区分想要读取资源值的线程（读取者线程）和想要更新资源的线程（写入者线程）。对于读取者线程，读写锁会允许他们并发的执行。当有写入者线程在占有资源时，读写锁会让其它写入者线程和读取者线程等待</p>
-<p>初始化:InitializeSRWLock</p>
-<p>写入者线程申请写资源:AcquireSRWLockExclusive</p>
-<p>写入者线程释放对资源的占用：ReleaseSRWLockExclusive</p>
-<p>读取者线程申请读资源:AcquireSRWLockShared</p>
-<p>读取者线程释放对资源的占用：ReleaseSRWLockShared</p>
-<p>注意：1.一个线程仅能锁定资源一次，不能多次锁定资源。2.先声明后初始化，不用销毁，系统自动清理</p>
-<p>只要在线程函数中对读写操作加读写锁就可以了，比事件来得简单多了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/09/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E7%BB%83%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">展开全文 >></a>
         </p>
       
 
@@ -1232,6 +1227,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
             
             <div class="clearfix"></div>
